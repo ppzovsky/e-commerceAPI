@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,20 +26,13 @@ public class ItemPedido {
 	private Double valorBruto;
 	@Column(name = "valor_liquido")
 	private Double valorLiquido;
-
-	/*
-	 * @ManyToOne
-	 * 
-	 * @MapsId("idProduto")
-	 * 
-	 * @JoinColumn(name = "id_produto") private Produto produto;
-	 * 
-	 * @ManyToOne
-	 * 
-	 * @MapsId("idPedido")
-	 * 
-	 * @JoinColumn(name = "id_pedido") private Pedido pedido;
-	 */
+	@ManyToOne
+    @JoinColumn (name = "id_produto")
+    private Produto produto;
+	@ManyToOne
+	@JoinColumn (name = "id_pedido")
+	private Pedido pedido;
+	
 	public ItemPedido() {
 	}
 
