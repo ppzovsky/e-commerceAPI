@@ -3,10 +3,12 @@ package br.org.serratec.eCommerce.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.org.serratec.eCommerce.entities.Endereco;
 import br.org.serratec.eCommerce.repositories.EnderecoRepository;
 
+@Service
 public class EnderecoService {
 	
 	@Autowired
