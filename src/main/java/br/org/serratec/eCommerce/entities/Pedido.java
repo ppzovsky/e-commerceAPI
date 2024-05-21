@@ -23,10 +23,10 @@ public class Pedido {
 	@Column(name = "data_envio")
 	private Date dataEnvio;
 	@Column(name = "status")
-	private String status;
+	private Boolean status;
 	// Sim, está temporariamente como double
 	@Column(name = "valor_total")
-	private double valorTotal;
+	private Double valorTotal;
 
 	/*
 	 * @ManyToOne
@@ -36,7 +36,7 @@ public class Pedido {
 	public Pedido() {
 	}
 
-	public Pedido(Integer idPedido, Date dataPedido, Date dataEntrega, Date dataEnvio, String status,
+	public Pedido(Integer idPedido, Date dataPedido, Date dataEntrega, Date dataEnvio, Boolean status,
 			double valorTotal) {
 		this.idPedido = idPedido;
 		this.dataPedido = dataPedido;
@@ -78,11 +78,11 @@ public class Pedido {
 		this.dataEnvio = dataEnvio;
 	}
 
-	public String getStatus() {
+	public Boolean getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 

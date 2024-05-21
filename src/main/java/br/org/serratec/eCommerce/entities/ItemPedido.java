@@ -17,13 +17,13 @@ public class ItemPedido {
 	@Column(name = "quantidade")
 	private int quantidade;
 	@Column(name = "preco_venda")
-	private double precoVenda;
+	private Double precoVenda;
 	@Column(name = "percentual_desconto")
 	private int percentualDesconto;
 	@Column(name = "valor_bruto")
-	private double valorBruto;
+	private Double valorBruto;
 	@Column(name = "valor_liquido")
-	private double valorLiquido;
+	private Double valorLiquido;
 
 	/*
 	 * @ManyToOne
