@@ -1,12 +1,18 @@
 package br.org.serratec.eCommerce.entities;
 
 import java.sql.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,11 +35,12 @@ public class Produto {
 	//Sim, ta temporariamente como string
 	@Column(name = "imagem")
 	private String imagem;
-	/*
 	@ManyToOne
     @JoinColumn (name = "id_categoria")
-    private Categoria idCategoria;
-    */
+    private Categoria categoria;
+	@OneToMany(mappedBy = "produto")
+	@JsonIgnore
+	private List<ItemPedido> itemPedido;
 	
 	public Produto() {
 	}
@@ -104,5 +111,21 @@ public class Produto {
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
-	
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public List<ItemPedido> getItemPedido() {
+		return itemPedido;
+	}
+
+	public void setItemPedido(List<ItemPedido> itemPedido) {
+		this.itemPedido = itemPedido;
+	}
+
 }

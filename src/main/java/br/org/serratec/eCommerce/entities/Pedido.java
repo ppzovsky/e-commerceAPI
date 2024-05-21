@@ -1,12 +1,18 @@
 package br.org.serratec.eCommerce.entities;
 
 import java.sql.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,12 +33,13 @@ public class Pedido {
 	// Sim, está temporariamente como double
 	@Column(name = "valor_total")
 	private Double valorTotal;
+	@ManyToOne
+    @JoinColumn(name = "idCliente")
+    private Cliente cliente;
+    @OneToMany(mappedBy = "pedido")
+    @JsonIgnore
+    private List<ItemPedido> itemPedido;
 
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn (name = "id_cliente") private Cliente idCliente;
-	 */
 	public Pedido() {
 	}
 
@@ -94,4 +101,23 @@ public class Pedido {
 		this.valorTotal = valorTotal;
 	}
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public List<ItemPedido> getItemPedido() {
+		return itemPedido;
+	}
+
+	public void setItemPedido(List<ItemPedido> itemPedido) {
+		this.itemPedido = itemPedido;
+	}
+
+	public void setValorTotal(Double valorTotal) {
+		this.valorTotal = valorTotal;
+	}
 }
