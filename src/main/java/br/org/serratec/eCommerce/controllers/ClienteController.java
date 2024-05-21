@@ -18,7 +18,7 @@ import br.org.serratec.eCommerce.entities.Cliente;
 import br.org.serratec.eCommerce.services.ClienteService;
 
 @RestController
-@RequestMapping("/cliente")
+@RequestMapping("/clientes")
 public class ClienteController {
 	@Autowired
 	ClienteService clienteService;

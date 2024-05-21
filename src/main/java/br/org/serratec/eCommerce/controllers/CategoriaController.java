@@ -18,7 +18,7 @@ import br.org.serratec.eCommerce.entities.Categoria;
 import br.org.serratec.eCommerce.services.CategoriaService;
 
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("/categorias")
 public class CategoriaController {
 	@Autowired
 	CategoriaService categoriaService;

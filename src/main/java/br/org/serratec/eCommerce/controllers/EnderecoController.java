@@ -18,7 +18,7 @@ import br.org.serratec.eCommerce.entities.Endereco;
 import br.org.serratec.eCommerce.services.EnderecoService;
 
 @RestController
-@RequestMapping("/endereco")
+@RequestMapping("/enderecos")
 public class EnderecoController {
 	@Autowired
 	EnderecoService enderecoService;

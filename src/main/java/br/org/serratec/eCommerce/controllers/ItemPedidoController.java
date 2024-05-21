@@ -18,7 +18,7 @@ import br.org.serratec.eCommerce.entities.ItemPedido;
 import br.org.serratec.eCommerce.services.ItemPedidoService;
 
 @Controller
-@RequestMapping("/itens-pedido")
+@RequestMapping("/itens-pedidos")
 public class ItemPedidoController {
 	
 	@Autowired
