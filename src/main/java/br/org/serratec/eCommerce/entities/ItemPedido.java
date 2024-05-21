@@ -41,8 +41,8 @@ public class ItemPedido {
 	public ItemPedido() {
 	}
 
-	public ItemPedido(Integer idItemPedido, int quantidade, double precoVenda, int percentualDesconto,
-			double valorBruto, double valorLiquido) {
+	public ItemPedido(Integer idItemPedido, int quantidade, Double precoVenda, int percentualDesconto,
+			Double valorBruto, Double valorLiquido) {
 		this.idItemPedido = idItemPedido;
 		this.quantidade = quantidade;
 		this.precoVenda = precoVenda;
@@ -67,7 +67,7 @@ public class ItemPedido {
 		this.quantidade = quantidade;
 	}
 
-	public double getPrecoVenda() {
+	public Double getPrecoVenda() {
 		return precoVenda;
 	}
 
@@ -83,7 +83,7 @@ public class ItemPedido {
 		this.percentualDesconto = percentualDesconto;
 	}
 
-	public double getValorBruto() {
+	public Double getValorBruto() {
 		return valorBruto;
 	}
 
@@ -91,7 +91,7 @@ public class ItemPedido {
 		this.valorBruto = valorBruto;
 	}
 
-	public double getValorLiquido() {
+	public Double getValorLiquido() {
 		return valorLiquido;
 	}
 

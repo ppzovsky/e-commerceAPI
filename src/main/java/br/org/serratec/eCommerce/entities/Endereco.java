@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -12,12 +13,11 @@ import jakarta.persistence.Table;
 public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_endereco")
-	private Integer idEndereco;
+	@Column(name = "endereco_id")
+	private Integer enderecoId;
 	
-//	@OneToOne(mappedBy = "endereco")
-//	private Cliente cliente;
-
+	@OneToOne(mappedBy = "endereco")
+	private Cliente cliente;
 	
 	@Column(name = "cep")
 	private String cep;
@@ -46,7 +46,7 @@ public class Endereco {
 	public Endereco(Integer idEndereco, String cep, String rua, String bairro, String cidade, int numero,
 			String complemento, String uf) {
 		super();
-		this.idEndereco = idEndereco;
+		this.enderecoId = idEndereco;
 		this.cep = cep;
 		this.rua = rua;
 		this.bairro = bairro;
@@ -54,14 +54,6 @@ public class Endereco {
 		this.numero = numero;
 		this.complemento = complemento;
 		this.uf = uf;
-	}
-
-	public Integer getIdEndereco() {
-		return idEndereco;
-	}
-
-	public void setIdEndereco(Integer idEndereco) {
-		this.idEndereco = idEndereco;
 	}
 
 	public String getCep() {
@@ -119,6 +111,23 @@ public class Endereco {
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
+
+	public Integer getEnderecoId() {
+		return enderecoId;
+	}
+
+	public void setEnderecoId(Integer enderecoId) {
+		this.enderecoId = enderecoId;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
 	
 }
 	
