@@ -7,6 +7,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "endereco")
@@ -16,18 +19,23 @@ public class Endereco {
 	@Column(name = "endereco_id")
 	private Integer enderecoId;
 	
+	@NotBlank
 	@OneToOne(mappedBy = "endereco")
 	private Cliente cliente;
 	
+	@NotBlank
 	@Column(name = "cep")
 	private String cep;
 	
+	@NotBlank
 	@Column(name = "rua")
 	private String rua;
 	
+	@NotBlank
 	@Column(name = "bairro")
 	private String bairro;
 	
+	@NotBlank
 	@Column(name = "cidade")
 	private String cidade;
 	
@@ -37,6 +45,8 @@ public class Endereco {
 	@Column(name = "complemento")
 	private String complemento;
 	
+	@Size(min = 2, max = 2)
+	@NotBlank
 	@Column(name = "uf")
 	private String uf;
 	
@@ -130,4 +140,3 @@ public class Endereco {
 	
 	
 }
-	

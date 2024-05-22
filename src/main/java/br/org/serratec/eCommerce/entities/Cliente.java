@@ -12,7 +12,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-
+import jakarta.validation.constraints.NotBlank;
 @Entity
 @Table(name = "cliente")
 public class Cliente {
@@ -23,20 +23,26 @@ public class Cliente {
 	private Integer idCliente;
 
 	@Column(unique =  true , name = "email")
-	@Pattern(regexp = "^[\\w!#$%&amp;'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&amp;'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$" , message = "Digite um email válido")
+	@NotBlank(message = "O campo email não pode ser vazio.")
+	@Pattern(regexp = "^[\\w!#$%&amp;'*+/=?{|}~^-]+(?:\\.[\\w!#$%&amp;'*+/=?{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$" , message = "Digite um email válido")
 	private String email;
-
+	
+	
 	@Column(name = "nome_completo")
+	@NotBlank(message = "O campo nome completo não pode ser vazio.")
 	private String nomeCompleto;
 
 	@Column(unique = true, name = "cpf")
+	@NotBlank(message = "O campo CPF não pode ser vazio.")
 	@Size(min = 11, max = 11)
 	private String cpf;
 
 	@Column(name = "telefone")
+	 @NotBlank(message = "O campo telefone não pode ser vazio.")
 	private String telefone;
 
 	@Column(name = "data_nascimento")
+	 @NotBlank(message = "O campo data de nascimento não pode ser vazio.")
 	private Date dataNascimento;
 
 	@OneToOne

@@ -14,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "pedido")
@@ -22,23 +23,35 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_pedido")
 	private Integer idPedido;
+
+	@NotNull
 	@Column(name = "data_pedido")
 	private Date dataPedido;
+
+	@NotNull
 	@Column(name = "data_entrega")
 	private Date dataEntrega;
+
+	@NotNull
 	@Column(name = "data_envio")
 	private Date dataEnvio;
+
+	@NotNull
 	@Column(name = "status")
 	private Boolean status;
+
+	@NotNull
 	// Sim, está temporariamente como double
 	@Column(name = "valor_total")
 	private Double valorTotal;
+
+	@NotNull
 	@ManyToOne
-    @JoinColumn(name = "idCliente")
-    private Cliente cliente;
-    @OneToMany(mappedBy = "pedido")
-    @JsonIgnore
-    private List<ItemPedido> itemPedido;
+	@JoinColumn(name = "idCliente")
+	private Cliente cliente;
+	@OneToMany(mappedBy = "pedido")
+	@JsonIgnore
+	private List<ItemPedido> itemPedido;
 
 	public Pedido() {
 	}

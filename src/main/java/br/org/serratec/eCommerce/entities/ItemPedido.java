@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "itemPedido")
@@ -16,14 +17,24 @@ public class ItemPedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_item_pedido")
 	private Integer idItemPedido;
+	
+	@NotNull
 	@Column(name = "quantidade")
 	private int quantidade;
+	
+	@NotNull
 	@Column(name = "preco_venda")
 	private Double precoVenda;
+	
+	@NotNull
 	@Column(name = "percentual_desconto")
 	private int percentualDesconto;
+	
+	@NotNull
 	@Column(name = "valor_bruto")
 	private Double valorBruto;
+	
+	@NotNull
 	@Column(name = "valor_liquido")
 	private Double valorLiquido;
 	@ManyToOne

@@ -11,18 +11,32 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "categoria")
 public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	
 	@Column(name = "id_categoria")
 	private Integer idCategoria;
+	
+	@NotNull
+	@NotBlank
+	@Size(min = 3, max = 50)
 	@Column(name = "nome")
 	private String nome;
+	
+	@NotNull
+	@NotBlank
 	@Column(name = "descricao")
 	private String descricao;
+	
 	@OneToMany(mappedBy = "categoria")
 	@JsonIgnore
 	private List<Produto> produto;
