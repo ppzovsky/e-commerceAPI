@@ -19,7 +19,6 @@ public class Endereco {
 	@Column(name = "endereco_id")
 	private Integer enderecoId;
 	
-	@NotBlank
 	@OneToOne(mappedBy = "endereco")
 	private Cliente cliente;
 	

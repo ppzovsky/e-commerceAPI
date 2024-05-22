@@ -10,9 +10,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import jakarta.validation.constraints.NotBlank;
 @Entity
 @Table(name = "cliente")
 public class Cliente {
@@ -42,7 +43,7 @@ public class Cliente {
 	private String telefone;
 
 	@Column(name = "data_nascimento")
-	 @NotBlank(message = "O campo data de nascimento não pode ser vazio.")
+	@NotNull(message = "O campo data de nascimento não pode ser vazio.")
 	private Date dataNascimento;
 
 	@OneToOne

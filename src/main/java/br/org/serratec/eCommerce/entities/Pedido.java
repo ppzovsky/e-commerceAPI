@@ -43,12 +43,13 @@ public class Pedido {
 	@NotNull
 	// Sim, está temporariamente como double
 	@Column(name = "valor_total")
-	private Double valorTotal;
+	private double valorTotal;
 
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "idCliente")
 	private Cliente cliente;
+	
 	@OneToMany(mappedBy = "pedido")
 	@JsonIgnore
 	private List<ItemPedido> itemPedido;

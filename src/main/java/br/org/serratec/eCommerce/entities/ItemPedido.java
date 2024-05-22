@@ -17,33 +17,35 @@ public class ItemPedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_item_pedido")
 	private Integer idItemPedido;
-	
+
 	@NotNull
 	@Column(name = "quantidade")
 	private int quantidade;
-	
+
 	@NotNull
 	@Column(name = "preco_venda")
 	private Double precoVenda;
-	
+
 	@NotNull
 	@Column(name = "percentual_desconto")
 	private int percentualDesconto;
-	
+
 	@NotNull
 	@Column(name = "valor_bruto")
 	private Double valorBruto;
-	
+
 	@NotNull
 	@Column(name = "valor_liquido")
 	private Double valorLiquido;
-	@ManyToOne
-    @JoinColumn (name = "id_produto")
-    private Produto produto;
-	@ManyToOne
-	@JoinColumn (name = "id_pedido")
-	private Pedido pedido;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_produto")
+	private Produto produto;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_pedido")
+	private Pedido pedido;
+
 	public ItemPedido() {
 	}
 
@@ -104,4 +106,21 @@ public class ItemPedido {
 	public void setValorLiquido(double valorLiquido) {
 		this.valorLiquido = valorLiquido;
 	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+	
 }
