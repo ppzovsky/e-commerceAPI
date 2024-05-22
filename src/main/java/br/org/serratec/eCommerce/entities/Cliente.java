@@ -10,6 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "cliente")
@@ -20,13 +22,15 @@ public class Cliente {
 	@Column(name = "id_cliente")
 	private Integer idCliente;
 
-	@Column(name = "email")
+	@Column(unique =  true , name = "email")
+	@Pattern(regexp = "^[\\w!#$%&amp;'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&amp;'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$" , message = "Digite um email válido")
 	private String email;
 
 	@Column(name = "nome_completo")
 	private String nomeCompleto;
 
-	@Column(name = "cpf")
+	@Column(unique = true, name = "cpf")
+	@Size(min = 11, max = 11)
 	private String cpf;
 
 	@Column(name = "telefone")

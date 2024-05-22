@@ -2,6 +2,7 @@ package br.org.serratec.eCommerce.controllers;
 
 import java.util.List;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,12 +40,12 @@ public class ProdutoController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Produto> save(@RequestBody Produto produto) {
+	public ResponseEntity<Produto> save(@Valid @RequestBody Produto produto) {
 		return new ResponseEntity<>(produtoService.save(produto), HttpStatus.CREATED);
 	}
 
 	@PutMapping
-	public ResponseEntity<Produto> update(@RequestBody Produto produto) {
+	public ResponseEntity<Produto> update(@Valid @RequestBody Produto produto) {
 		return new ResponseEntity<>(produtoService.update(produto), HttpStatus.OK);
 	}
 
