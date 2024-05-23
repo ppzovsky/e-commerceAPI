@@ -2,6 +2,8 @@ package br.org.serratec.eCommerce.entities;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,6 +50,7 @@ public class Cliente {
 
 	@OneToOne
 	@JoinColumn(name = "endereco_id", referencedColumnName = "endereco_Id")
+	@JsonManagedReference
 	private Endereco endereco;
 	
 	public Cliente() {

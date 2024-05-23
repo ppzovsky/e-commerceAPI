@@ -1,5 +1,7 @@
 package br.org.serratec.eCommerce.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +22,7 @@ public class Endereco {
 	private Integer enderecoId;
 	
 	@OneToOne(mappedBy = "endereco")
+	@JsonBackReference
 	private Cliente cliente;
 	
 	@NotBlank
