@@ -3,16 +3,17 @@ package br.org.serratec.eCommerce.Dtos;
 import java.sql.Date;
 import java.util.List;
 
+import br.org.serratec.eCommerce.entities.Cliente;
+import br.org.serratec.eCommerce.entities.ItemPedido;
+
 public class PedidoResumidoDto {
 	
 	private Integer idPedido;
 	private Date dataPedido;
 	private Date dataEntrega;
 	private Date dataEnvio;
-	private Boolean status;
-	private double valorTotal;
-	private ClienteResumidoDto cliente;
-	private List<ItemPedidoResumidoDto> itemPedido;
+	private Cliente cliente;
+	private List<ItemPedido> itemPedido;
 	public Integer getIdPedido() {
 		return idPedido;
 	}
