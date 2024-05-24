@@ -50,7 +50,6 @@ public class Pedido {
 	private Cliente cliente;
 	
 	@OneToMany(mappedBy = "pedido")
-	@JsonIgnore
 	private List<ItemPedido> itemPedido;
 
 	public Pedido() {
@@ -107,14 +106,14 @@ public class Pedido {
 	}
 
 	public Double getValorTotal() {
-		return valorTotal;
-	}
-
-	public void setValorTotal(Double valorTotal) {
 		valorTotal = 0.0;
 		for (ItemPedido item : itemPedido) {
 			valorTotal += item.getValorLiquido();
 		}
+		return valorTotal;
+	}
+
+	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
 

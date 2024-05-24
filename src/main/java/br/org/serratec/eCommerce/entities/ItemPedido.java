@@ -99,7 +99,7 @@ public class ItemPedido {
 		return validaValorBruto();
 	}
 
-	public void setValorBruto(double valorBruto) {
+	public void setValorBruto(Double valorBruto) {
 		this.valorBruto = valorBruto;
 	}
 
@@ -107,7 +107,7 @@ public class ItemPedido {
 		return validaValorLiquido();
 	}
 
-	public void setValorLiquido(double valorLiquido) {
+	public void setValorLiquido(Double valorLiquido) {
 		this.valorLiquido = valorLiquido;
 	}
 
@@ -128,6 +128,7 @@ public class ItemPedido {
 	}
 	
 	public Double validaValorBruto() {
+		//testar com parametro Produto produto
 		Double valor = getQuantidade() * produto.getValorUnitario();
 		return valor;
 	}
