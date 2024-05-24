@@ -51,7 +51,12 @@
             <artifactId>jakarta.xml.bind-api</artifactId>
             <version>4.0.2</version>
         </dependency>
-    </dependencies>
+        <dependency>
+        	<groupId>br.org.serratec</groupId>
+        	<artifactId>biblioteca</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+        </dependency>
+	</dependencies>
 
 	<build>
 		<plugins>

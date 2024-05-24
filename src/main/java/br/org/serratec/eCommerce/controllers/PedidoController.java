@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.org.serratec.eCommerce.Dtos.PedidoResumidoDto;
 import br.org.serratec.eCommerce.entities.Pedido;
 import br.org.serratec.eCommerce.services.PedidoService;
 
@@ -40,7 +41,7 @@ public class PedidoController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Pedido>save(@RequestBody Pedido pedido){
+	public ResponseEntity<Pedido>save(@RequestBody PedidoResumidoDto pedido){
 		return new ResponseEntity<>(pedidoService.save(pedido), HttpStatus.CREATED);
 	}
 	
