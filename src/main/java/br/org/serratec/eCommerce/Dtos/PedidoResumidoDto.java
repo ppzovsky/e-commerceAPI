@@ -3,7 +3,7 @@ package br.org.serratec.eCommerce.Dtos;
 import java.sql.Date;
 import java.util.List;
 
-public class 	PedidoResumidoDto {
+public class PedidoResumidoDto {
 	
 	private Integer idPedido;
 	private Date dataPedido;
