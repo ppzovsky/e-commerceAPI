@@ -37,35 +37,17 @@ public class PedidoResumidoDto {
 	public void setDataEnvio(Date dataEnvio) {
 		this.dataEnvio = dataEnvio;
 	}
-	public Boolean getStatus() {
-		return status;
-	}
-	public void setStatus(Boolean status) {
-		this.status = status;
-	}
-	public double getValorTotal() {
-		return valorTotal;
-	}
-	public void setValorTotal(double valorTotal) {
-		this.valorTotal = valorTotal;
-	}
-	public ClienteResumidoDto getCliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
-	public void setCliente(ClienteResumidoDto cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public List<ItemPedidoResumidoDto> getItemPedido() {
+	public List<ItemPedido> getItemPedido() {
 		return itemPedido;
 	}
-	public void setItemPedido(List<ItemPedidoResumidoDto> itemPedido) {
+	public void setItemPedido(List<ItemPedido> itemPedido) {
 		this.itemPedido = itemPedido;
 	}
-	
-	@Override
-	public String toString() {
-		return "PedidoResumidoDto [idPedido=" + idPedido + ", dataPedido=" + dataPedido + ", dataEntrega=" + dataEntrega
-				+ ", dataEnvio=" + dataEnvio + ", status=" + status + ", valorTotal=" + valorTotal + ", cliente="
-				+ cliente + ", itemPedido=" + itemPedido + "]";
-	}
+
 }

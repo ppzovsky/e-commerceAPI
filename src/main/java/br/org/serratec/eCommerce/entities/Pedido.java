@@ -1,10 +1,11 @@
 package br.org.serratec.eCommerce.entities;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.org.serratec.eCommerce.enuns.Status;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 
 @Entity
 @Table(name = "pedido")
@@ -24,26 +26,23 @@ public class Pedido {
 	@Column(name = "id_pedido")
 	private Integer idPedido;
 
-	@NotNull
+	@PastOrPresent
 	@Column(name = "data_pedido")
-	private Date dataPedido;
+	public LocalDate dataPedido;
 
-	@NotNull
+	@PastOrPresent
 	@Column(name = "data_entrega")
-	private Date dataEntrega;
+	private LocalDate dataEntrega;
 
-	@NotNull
+	@PastOrPresent
 	@Column(name = "data_envio")
-	private Date dataEnvio;
+	private LocalDate dataEnvio;
 
-	@NotNull
 	@Column(name = "status")
-	private Boolean status;
+	private Status status;
 
-	@NotNull
-	// Sim, está temporariamente como double
 	@Column(name = "valor_total")
-	private double valorTotal;
+	private Double valorTotal;
 
 	@NotNull
 	@ManyToOne
@@ -57,8 +56,8 @@ public class Pedido {
 	public Pedido() {
 	}
 
-	public Pedido(Integer idPedido, Date dataPedido, Date dataEntrega, Date dataEnvio, Boolean status,
-			double valorTotal) {
+	public Pedido(Integer idPedido, LocalDate dataPedido, LocalDate dataEntrega, LocalDate dataEnvio, Status status,
+			Double valorTotal) {
 		this.idPedido = idPedido;
 		this.dataPedido = dataPedido;
 		this.dataEntrega = dataEntrega;
@@ -75,43 +74,47 @@ public class Pedido {
 		this.idPedido = idPedido;
 	}
 
-	public Date getDataPedido() {
+	public LocalDate getDataPedido() {
 		return dataPedido;
 	}
 
-	public void setDataPedido(Date dataPedido) {
+	public void setDataPedido(LocalDate dataPedido) {
 		this.dataPedido = dataPedido;
 	}
 
-	public Date getDataEntrega() {
+	public LocalDate getDataEntrega() {
 		return dataEntrega;
 	}
 
-	public void setDataEntrega(Date dataEntrega) {
+	public void setDataEntrega(LocalDate dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
 
-	public Date getDataEnvio() {
+	public LocalDate getDataEnvio() {
 		return dataEnvio;
 	}
 
-	public void setDataEnvio(Date dataEnvio) {
+	public void setDataEnvio(LocalDate dataEnvio) {
 		this.dataEnvio = dataEnvio;
 	}
 
-	public Boolean getStatus() {
-		return status;
+	public Status getStatus() {
+		return validaStatus();
 	}
 
-	public void setStatus(Boolean status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
-	public double getValorTotal() {
+	public Double getValorTotal() {
 		return valorTotal;
 	}
 
-	public void setValorTotal(double valorTotal) {
+	public void setValorTotal(Double valorTotal) {
+		valorTotal = 0.0;
+		for (ItemPedido item : itemPedido) {
+			valorTotal += item.getValorLiquido();
+		}
 		this.valorTotal = valorTotal;
 	}
 
@@ -131,7 +134,16 @@ public class Pedido {
 		this.itemPedido = itemPedido;
 	}
 
-	public void setValorTotal(Double valorTotal) {
-		this.valorTotal = valorTotal;
+	public Status validaStatus() {
+		if(getDataEntrega()==null && getDataEnvio()==null) {
+			status = status.PREPARANDO;
+		}
+		if(getDataEnvio()!= null && getDataEntrega()==null) {
+			status = status.ENVIADO;
+		}
+		if(getDataEntrega()!=null) {
+			status = status.ENTREGUE;
+		}
+		return status;
 	}
 }

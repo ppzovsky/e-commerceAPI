@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -26,6 +28,8 @@ public class ItemPedido {
 	@Column(name = "preco_venda")
 	private Double precoVenda;
 
+	@Min(0)
+	@Max(100)
 	@NotNull
 	@Column(name = "percentual_desconto")
 	private int percentualDesconto;
@@ -76,7 +80,7 @@ public class ItemPedido {
 	}
 
 	public Double getPrecoVenda() {
-		return precoVenda;
+		return produto.getValorUnitario();
 	}
 
 	public void setPrecoVenda(double precoVenda) {
@@ -92,7 +96,7 @@ public class ItemPedido {
 	}
 
 	public Double getValorBruto() {
-		return valorBruto;
+		return validaValorBruto();
 	}
 
 	public void setValorBruto(double valorBruto) {
@@ -100,7 +104,7 @@ public class ItemPedido {
 	}
 
 	public Double getValorLiquido() {
-		return valorLiquido;
+		return validaValorLiquido();
 	}
 
 	public void setValorLiquido(double valorLiquido) {
@@ -123,4 +127,13 @@ public class ItemPedido {
 		this.pedido = pedido;
 	}
 	
+	public Double validaValorBruto() {
+		Double valor = getQuantidade() * produto.getValorUnitario();
+		return valor;
+	}
+	
+	public Double validaValorLiquido() {
+		 Double valor = getValorBruto()-(((getPercentualDesconto()) / 100.0)*getValorBruto());
+		return valor;
+	}
 }

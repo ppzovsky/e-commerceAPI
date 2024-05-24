@@ -1,6 +1,6 @@
 package br.org.serratec.eCommerce.Dtos;
 
-public class ItemPedidoResumidoDto {
+public class ItemPedidoDto {
 	
 	private Integer idItemPedido;
 	private int quantidade;
@@ -8,8 +8,8 @@ public class ItemPedidoResumidoDto {
 	private int percentualDesconto;
 	private Double valorBruto;
 	private Double valorLiquido;
-	private ProdutoResumidoDto produto;
-	private PedidoResumidoDto pedido;
+	private ProdutoDto produto;
+	
 	public Integer getIdItemPedido() {
 		return idItemPedido;
 	}
@@ -46,23 +46,10 @@ public class ItemPedidoResumidoDto {
 	public void setValorLiquido(Double valorLiquido) {
 		this.valorLiquido = valorLiquido;
 	}
-	public ProdutoResumidoDto getProduto() {
+	public ProdutoDto getProduto() {
 		return produto;
 	}
-	public void setProduto(ProdutoResumidoDto produto) {
+	public void setProduto(ProdutoDto produto) {
 		this.produto = produto;
 	}
-	public PedidoResumidoDto getPedido() {
-		return pedido;
-	}
-	public void setPedido(PedidoResumidoDto pedido) {
-		this.pedido = pedido;
-	}
-	
-	@Override
-	public String toString() {
-		return "ItemPedidoResumidoDto [idItemPedido=" + idItemPedido + ", quantidade=" + quantidade + ", precoVenda="
-				+ precoVenda + ", percentualDesconto=" + percentualDesconto + ", valorBruto=" + valorBruto
-				+ ", valorLiquido=" + valorLiquido + ", produto=" + produto + ", pedido=" + pedido + "]";
-	}	
 }

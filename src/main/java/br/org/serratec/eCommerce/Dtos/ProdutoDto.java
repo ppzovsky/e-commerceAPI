@@ -3,7 +3,7 @@ package br.org.serratec.eCommerce.Dtos;
 import java.sql.Date;
 import java.util.List;
 
-public class ProdutoResumidoDto {
+public class ProdutoDto {
 	
 	private Integer idProduto;
 	private String nome;	
@@ -12,7 +12,7 @@ public class ProdutoResumidoDto {
 	private Date dataCadastro;	
 	private double valorUnitario;	
     private CategoriaResumidoDto categoria;	
-	private List<ItemPedidoResumidoDto> itemPedido;
+	private List<ItemPedidoDto> itemPedido;
 	
 	public Integer getIdProduto() {
 		return idProduto;
@@ -56,10 +56,10 @@ public class ProdutoResumidoDto {
 	public void setCategoria(CategoriaResumidoDto categoria) {
 		this.categoria = categoria;
 	}
-	public List<ItemPedidoResumidoDto> getItemPedido() {
+	public List<ItemPedidoDto> getItemPedido() {
 		return itemPedido;
 	}
-	public void setItemPedido(List<ItemPedidoResumidoDto> itemPedido) {
+	public void setItemPedido(List<ItemPedidoDto> itemPedido) {
 		this.itemPedido = itemPedido;
 	}
 	
