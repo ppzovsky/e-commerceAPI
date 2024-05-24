@@ -96,19 +96,19 @@ public class ItemPedido {
 	}
 
 	public Double getValorBruto() {
-		return validaValorBruto();
+		return valorBruto;
 	}
 
-	public void setValorBruto(Double valorBruto) {
-		this.valorBruto = valorBruto;
+	public void setValorBruto() {
+		this.valorBruto = getQuantidade() * getPrecoVenda();
 	}
 
 	public Double getValorLiquido() {
-		return validaValorLiquido();
+		return valorLiquido;
 	}
 
-	public void setValorLiquido(Double valorLiquido) {
-		this.valorLiquido = valorLiquido;
+	public void setValorLiquido() {
+		this.valorLiquido = getValorBruto()-(((getPercentualDesconto()) / 100.0)*getValorBruto());
 	}
 
 	public Produto getProduto() {
@@ -125,16 +125,5 @@ public class ItemPedido {
 
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
-	}
-	
-	public Double validaValorBruto() {
-		//testar com parametro Produto produto
-		Double valor = getQuantidade() * produto.getValorUnitario();
-		return valor;
-	}
-	
-	public Double validaValorLiquido() {
-		 Double valor = getValorBruto()-(((getPercentualDesconto()) / 100.0)*getValorBruto());
-		return valor;
 	}
 }

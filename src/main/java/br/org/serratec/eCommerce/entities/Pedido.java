@@ -106,15 +106,15 @@ public class Pedido {
 	}
 
 	public Double getValorTotal() {
-		valorTotal = 0.0;
-		for (ItemPedido item : itemPedido) {
-			valorTotal += item.getValorLiquido();
-		}
 		return valorTotal;
 	}
 
-	public void setValorTotal(Double valorTotal) {
-		this.valorTotal = valorTotal;
+	public void setValorTotal() {
+		Double valor = 0.0;
+		for (ItemPedido item : itemPedido) {
+			valor += item.getValorLiquido();
+		}
+		this.valorTotal=valor;
 	}
 
 	public Cliente getCliente() {
@@ -133,7 +133,7 @@ public class Pedido {
 		this.itemPedido = itemPedido;
 	}
 
-	public Status validaStatus() {
+	public Status validaStatus() {	
 		if(getDataEntrega()==null && getDataEnvio()==null) {
 			status = status.PREPARANDO;
 		}
