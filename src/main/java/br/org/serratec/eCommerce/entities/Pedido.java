@@ -3,8 +3,6 @@ package br.org.serratec.eCommerce.entities;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import br.org.serratec.eCommerce.enuns.Status;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
